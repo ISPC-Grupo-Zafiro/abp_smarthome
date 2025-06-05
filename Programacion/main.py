@@ -1,5 +1,12 @@
-from dispositivos import listar_dispositivos, agregar_dispositivo, buscar_dispositivo, editar_dispositivo, eliminar_dispositivo
+from dispositivos import (
+    listar_dispositivos,
+    agregar_dispositivo,
+    buscar_dispositivo,
+    editar_dispositivo,
+    eliminar_dispositivo,
+)
 from automatizacion import listar_automatizaciones, activar_automatizacion
+
 
 def menu():
     print("\n--- Menu ---")
@@ -20,38 +27,43 @@ def main():
 
         if opcion == "1":
             dispositivos = listar_dispositivos()
-            if not dispositivos: 
+            if not dispositivos:
                 print("No hay dispositivos registrados.")
             else:
-                print("\n Dispositivos registrados ")
+                print("\nDISPOSITIVOS REGISTRADOS")
+                print("-" * 50)
                 for d in dispositivos:
-                    print(f"Dispositivo ID: {d['id_dispositivo']} - {d['nombre']} ({d['tipo']}) - Estado: {d['estado']}")
+                    print(f"   ID: {d['id_dispositivo']}")
+                    print(f"   Nombre : {d['nombre']}")
+                    print(f"   Tipo   : {d['tipo']}")
+                    print(f"   Estado : {d['estado']}")
+                    print("-" * 50)
 
         elif opcion == "2":
-            nombre = input("Nombre del dispositivo a buscar:")
+            nombre = input("Nombre del dispositivo a buscar (Por ejemplo: Jardin):")
             dispositivo = buscar_dispositivo(nombre)
             if dispositivo:
                 print(f"Dispositivo encontrado: {dispositivo}")
             else:
                 print("No se encontró el dispositivo.")
-        
+
         elif opcion == "3":
             nombre = input("Nombre del dispositivo:")
             tipo = input("Tipo de dispositivo:")
-            estado = input("Estado del dispositivo (encendido/apagado):")
-            nuevo_dispositivo = agregar_dispositivo(nombre, tipo, estado)
+            nuevo_dispositivo = agregar_dispositivo(nombre, tipo)
             print(nuevo_dispositivo)
 
         elif opcion == "4":
             nombre_original = input("Nombre del dispositivo que quieres editar:")
-            dispositivo = buscar_dispositivo(nombre_original)
             print("Dejar vacíos los campos que no quieras editar.")
             nuevo_nombre = input("Nombre del dispositivo:")
             nuevo_tipo = input("Tipo de dispositivo:")
             nuevo_estado = input("Estado del dispositivo (encendido/apagado):")
-            dispositivo_actualizado = editar_dispositivo(nombre_original, nuevo_nombre, nuevo_tipo, nuevo_estado)
+            dispositivo_actualizado = editar_dispositivo(
+                nombre_original, nuevo_nombre, nuevo_tipo, nuevo_estado
+            )
             print(dispositivo_actualizado)
-        
+
         elif opcion == "5":
             nombre = input("Nombre del dispositivo a eliminar:")
             dispositivo_eliminado = eliminar_dispositivo(nombre)
@@ -59,18 +71,22 @@ def main():
                 print(f"Dispositivo eliminado: {dispositivo_eliminado}")
             else:
                 print("No se encontró el dispositivo.")
-        
+
         elif opcion == "6":
             automatizaciones = listar_automatizaciones()
-            if not automatizaciones: 
+            if not automatizaciones:
                 print("No existen automatizaciones.")
             else:
                 print("\n Automatizaciones registradas ")
                 for a in automatizaciones:
-                    print(f"Automatización (ID {a['id_automatizacion']}) - Modo: {a['modo']}")
+                    print(
+                        f"Automatización (ID {a['id_automatizacion']}) - Modo: {a['modo']}"
+                    )
 
         elif opcion == "7":
-            modo_automatizacion = input("Nombre modo de la automatización que quiere activar (Ingrese 'noche'):")
+            modo_automatizacion = input(
+                "Nombre modo de la automatización que quiere activar (Ingrese 'noche'):"
+            )
             automatizacion = activar_automatizacion(modo_automatizacion)
             for a in automatizacion:
                 print(f"Dispositivo activado ID: {a}")
@@ -81,6 +97,7 @@ def main():
 
         else:
             print("Opción no válida. Intenta nuevamente.")
+
 
 __name__ = "__main__"
 main()
