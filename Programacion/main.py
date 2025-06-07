@@ -6,7 +6,7 @@ from dispositivos import (
     eliminar_dispositivo,
 )
 from automatizacion import listar_automatizaciones, activar_automatizacion
-
+from usuarios import ver_datos_personales
 
 def menu():
     print("\n--- Menu ---")
@@ -17,6 +17,7 @@ def menu():
     print("5. Eliminar dispositivo")
     print("6. Ver automatizaciones")
     print("7. Activar automatización")
+    print("8. Ver datos personales")    
     print("0. Cerrar programa")
 
 
@@ -90,14 +91,18 @@ def main():
             automatizacion = activar_automatizacion(modo_automatizacion)
             for a in automatizacion:
                 print(f"Dispositivo activado ID: {a}")
-
+                
+        elif opcion == "8":
+            email = input("Ingrese su email: ")
+            print(ver_datos_personales(email))
+    
         elif opcion == "0":
             print("Se cerró el programa")
             break
-
+        
         else:
             print("Opción no válida. Intenta nuevamente.")
 
 
 __name__ = "__main__"
-main()
+main() 
