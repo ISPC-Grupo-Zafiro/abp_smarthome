@@ -5,6 +5,13 @@ automatizaciones = [{
     "modo": "noche",
     "hora": "19:00",
     "valor": "encendido", # Aca se puede poner el valor que queremos que tenga el dispositivo, por ejemplo, si queremos bajar el brillo de la luz, se puede poner 60%
+    "activa": True        # Aquí sabemos si la automatización está activa o no
+}, {
+    "id_automatizacion": 2,
+    "modo": "dia",
+    "hora": "10:00",
+    "valor": "apagado",
+    "activa": True
 }]
 
 def listar_automatizaciones():
@@ -20,3 +27,15 @@ def activar_automatizacion(modo_automatizacion):
                     d["estado"] = "Encendido"
                     dispositivos_modificados.append(d["id_dispositivo"])
             return dispositivos_modificados
+        
+
+def consultar_automatizaciones_activas():
+    print("\n=== AUTOMATIZACIONES ACTIVAS ===")
+    activas = [a for a in automatizaciones if a.get("activa")]
+    if not activas:
+        print("No hay automatizaciones activas.")
+    else:
+        for a in activas:
+            print(f"ID: {a['id_automatizacion']}, Modo: {a['modo']}, Hora: {a['hora']}, Valor: {a['valor']}")
+    print("================================\n")
+

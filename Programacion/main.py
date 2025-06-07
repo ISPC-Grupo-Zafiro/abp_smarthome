@@ -1,3 +1,10 @@
+from automatizacion import (
+    listar_automatizaciones,
+    activar_automatizacion,
+    consultar_automatizaciones_activas
+)
+
+
 from dispositivos import (
     listar_dispositivos,
     agregar_dispositivo,
@@ -17,7 +24,8 @@ def menu():
     print("5. Eliminar dispositivo")
     print("6. Ver automatizaciones")
     print("7. Activar automatización")
-    print("8. Ver datos personales")    
+    print("8. Ver datos personales")
+    print("9. Consultar automatizaciones activas")
     print("0. Cerrar programa")
 
 
@@ -95,6 +103,9 @@ def main():
         elif opcion == "8":
             email = input("Ingrese su email: ")
             print(ver_datos_personales(email))
+            
+        elif opcion == "9":
+            consultar_automatizaciones_activas()
     
         elif opcion == "0":
             print("Se cerró el programa")
