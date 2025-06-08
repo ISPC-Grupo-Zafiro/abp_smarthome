@@ -30,12 +30,11 @@ def activar_automatizacion(modo_automatizacion):
         
 
 def consultar_automatizaciones_activas():
-    print("\n=== AUTOMATIZACIONES ACTIVAS ===")
     activas = [a for a in automatizaciones if a.get("activa")]
     if not activas:
-        print("No hay automatizaciones activas.")
+        return"No hay automatizaciones activas."
     else:
         for a in activas:
-            print(f"ID: {a['id_automatizacion']}, Modo: {a['modo']}, Hora: {a['hora']}, Valor: {a['valor']}")
-    print("================================\n")
+            return f"ID: {a['id_automatizacion']}, Modo: {a['modo']}, Hora: {a['hora']}, Valor: {a['valor']}"
+    
 
