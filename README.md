@@ -19,7 +19,7 @@ Mediante consola permite realizar operaciones CRUD sobre los dispositivos y acti
 - _Ver_ datos personales.
 - _Consultar_ automatizaciones activas.
 - _Iniciar_ sesión
--_Agregar_ Usuario 
+- _Agregar_ Usuario 
 - 
 
 ## Automatización
