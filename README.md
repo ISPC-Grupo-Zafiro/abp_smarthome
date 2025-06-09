@@ -11,9 +11,16 @@ Mediante consola permite realizar operaciones CRUD sobre los dispositivos y acti
 ## Funciones
 - _Listar_ todos los dispositivos existentes.
 - _Buscar_ dispositivo por nombre.
-- _Crear_ nuevos dispositivos.
-- _Editar_ información de un dispositivo.
+- _Agregar_ dispositivo.
+- _Editar_ dispositivo.
 - _Eliminar_ dispositivos por nombre.
+- _Ver_ automatizaciones.
+- _Activar_ automatizaciones.
+- _Ver_ datos personales.
+- _Consultar_ automatizaciones activas.
+- _Iniciar_ sesión
+-_Agregar_ Usuario 
+- 
 
 ## Automatización
 Para esta primera entrega del ABP, desarrollamos una automatización 
@@ -50,4 +57,4 @@ Correr el archivo main
 - [@eliiconcep](https://github.com/eliiconcep)
 - [@rooyar](https://github.com/rooyar)
 - [@LeandroUlloque](https://github.com/LeandroUlloque)
-- [@danaemeneses](https://github.com/danaemeneses)
+
