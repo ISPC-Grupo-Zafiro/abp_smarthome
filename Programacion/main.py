@@ -7,7 +7,7 @@ from dispositivos import (
     eliminar_dispositivo,
 )
 from automatizacion import listar_automatizaciones, activar_automatizacion, consultar_automatizaciones_activas
-from usuarios import ver_datos_personales, iniciar_sesion
+from usuarios import ver_datos_personales, iniciar_sesion, agregar_usuario
 def menu():
     print("\n--- Menu ---")
     print("1. Listar dispositivos")
@@ -20,6 +20,7 @@ def menu():
     print("8. Ver datos personales")
     print("9. Consultar automatizaciones activas")
     print("10. Iniciar sesión")
+    print("11. Agregar usuario")
     print("0. Cerrar programa")
 
 
@@ -105,6 +106,12 @@ def main():
             email_ingresado = input("Ingrese email: ")
             contraseña = input("Ingrese contraseña: ")
             print(iniciar_sesion(email_ingresado, contraseña))
+        
+        elif opcion == "11":
+            email = input("Ingrese su email: ")
+            nombre = input("Ingrese su nombre: ")
+            contraseña = input("Ingrese su contraseña: ")
+            print(agregar_usuario(email, nombre, contraseña))
             
         elif opcion == "0":
             print("Se cerró el programa")
