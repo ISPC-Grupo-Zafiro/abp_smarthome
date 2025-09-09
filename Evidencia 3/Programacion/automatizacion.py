@@ -1,17 +1,15 @@
 from dispositivos import listar_dispositivos
 
 automatizaciones = [{
-    "id_automatizacion": 1,
-    "modo": "noche",
-    "hora": "19:00",
-    "valor": "encendido", # Aca se puede poner el valor que queremos que tenga el dispositivo, por ejemplo, si queremos bajar el brillo de la luz, se puede poner 60%
-    "activa": True        # Aquí sabemos si la automatización está activa o no
+    "id_auto": 1,
+    "accion": "moverse a modo noche",
+    "hora": "19:00",  #No esta en el modelo relacional de base de datos pero la agregamos porque nos parecio importante como dato
+    "condicion": True        
 }, {
-    "id_automatizacion": 2,
-    "modo": "dia",
-    "hora": "10:00",
-    "valor": "apagado",
-    "activa": True
+    "id_auto": 2,
+    "accion": "sonar interminentemente",
+    "hora": "10:00",  #No esta en el modelo relacional de base de datos pero la agregamos porque nos parecio importante como dato
+    "condicion": True
 }]
 
 def listar_automatizaciones():
@@ -20,7 +18,7 @@ def listar_automatizaciones():
 def activar_automatizacion(modo_automatizacion):
     dispositivos_modificados = []
     for a in automatizaciones:
-        if a["modo"].lower() == modo_automatizacion.lower():
+        if a["accion"].lower() == modo_automatizacion.lower():
             dispositivos = listar_dispositivos()
             for d in dispositivos:
                 if d["estado"].lower() == "apagado" and d["tipo"].lower() == "luz exterior":
@@ -30,11 +28,11 @@ def activar_automatizacion(modo_automatizacion):
         
 
 def consultar_automatizaciones_activas():
-    activas = [a for a in automatizaciones if a.get("activa")]
+    activas = [a for a in automatizaciones if a.get("condicion")]
     if not activas:
         return"No hay automatizaciones activas."
     else:
+        resultado = "\n🔄 Automatizaciones activas:\n"
         for a in activas:
-            return f"ID: {a['id_automatizacion']}, Modo: {a['modo']}, Hora: {a['hora']}, Valor: {a['valor']}"
-    
-
+            resultado += f"ID: {a['id_auto']}, hora: {a['hora']}, acción: {a['accion']}\n"
+        return resultado 
