@@ -6,6 +6,6 @@ Este proyecto forma parte de la segunda entrega del ABP del módulo Programador 
 ## Autores - Tec. en Desarrollo de Software - ISPC
 
 - [@adriel1364](https://github.com/adriel1364)
-- [@eliiconcep](https://github.com/eliiconcep)
 - [@rooyar](https://github.com/rooyar)
 - [@LeandroUlloque](https://github.com/LeandroUlloque)
+
