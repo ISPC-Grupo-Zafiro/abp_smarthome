@@ -4,27 +4,29 @@ INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor
 INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (4, 'carla@mail.com', '2025-09-10 16:00', 'Ventilador encendido', 'ON');
 INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (5, 'david@mail.com', '2025-09-10 19:00', 'Gas detectado', 'Sí');
 INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (6, 'emma@mail.com', '2025-09-10 07:00', 'Luz apagada', 'OFF');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (7, 'ana@mail.com', '2025-09-11 08:00', 'Temperatura normal', '24°C');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (8, 'bruno@mail.com', '2025-09-11 09:15', 'Puerta abierta', 'Sí');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (9, 'carla@mail.com', '2025-09-11 10:00', 'Ventilador apagado', 'OFF');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (10, 'david@mail.com', '2025-09-11 11:30', 'Gas no detectado', 'No');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (11, 'emma@mail.com', '2025-09-11 12:00', 'Luz encendida', 'ON');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (12, 'ana@mail.com', '2025-09-11 13:00', 'Temperatura baja', '18°C');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (13, 'bruno@mail.com', '2025-09-11 14:45', 'Movimiento no detectado', 'No');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (14, 'carla@mail.com', '2025-09-11 15:30', 'Ventilador encendido', 'ON');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (15, 'david@mail.com', '2025-09-11 16:00', 'Gas detectado', 'Sí');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (16, 'emma@mail.com', '2025-09-11 17:00', 'Luz apagada', 'OFF');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (17, 'ana@mail.com', '2025-09-12 07:30', 'Temperatura alta', '30°C');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (18, 'bruno@mail.com', '2025-09-12 08:15', 'Puerta cerrada', 'No');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (19, 'carla@mail.com', '2025-09-12 09:00', 'Ventilador apagado', 'OFF');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (20, 'david@mail.com', '2025-09-12 10:30', 'Gas no detectado', 'No');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (21, 'emma@mail.com', '2025-09-12 11:00', 'Luz encendida', 'ON');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (22, 'ana@mail.com', '2025-09-12 12:15', 'Temperatura normal', '23°C');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (23, 'bruno@mail.com', '2025-09-12 13:00', 'Movimiento detectado', 'Sí');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (24, 'carla@mail.com', '2025-09-12 14:30', 'Ventilador encendido', 'ON');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (25, 'david@mail.com', '2025-09-12 15:00', 'Gas detectado', 'Sí');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (26, 'emma@mail.com', '2025-09-12 16:45', 'Luz apagada', 'OFF');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (27, 'ana@mail.com', '2025-09-13 08:00', 'Temperatura baja', '17°C');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (28, 'bruno@mail.com', '2025-09-13 09:30', 'Puerta abierta', 'Sí');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (29, 'carla@mail.com', '2025-09-13 10:00', 'Ventilador apagado', 'OFF');
-INSERT INTO EventoDispositivo (id_dispositivo, email, fecha_hora, detalle, valor) VALUES (30, 'david@mail.com', '2025-09-13 11:30', 'Gas no detectado', 'No');
+
+-- Aquí agregué 6 insert para cada tabla restantes --
+INSERT INTO Usuario (email, nombre, contraseña) VALUES ('ana@mail.com', 'Ana', '1234'),('bruno@mail.com', 'Bruno', '1234'),('carla@mail.com', 'Carla', '1234'),('david@mail.com', 'David', '1234'),('emma@mail.com', 'Emma', '1234'),('franco@mail.com', 'Franco', '1234');
+INSERT INTO Vivienda (nombre_vivienda, ubicacion, email_usuario) VALUES ('Casa Ana', 'Córdoba Capital', 'ana@mail.com'),('Casa Bruno', 'Rosario Centro', 'bruno@mail.com'),('Casa Carla', 'Mendoza Sur', 'carla@mail.com'),('Casa David', 'Salta Norte', 'david@mail.com'),('Casa Emma', 'Buenos Aires Oeste', 'emma@mail.com'),('Casa Franco', 'La Plata', 'franco@mail.com');
+INSERT INTO Dispositivo (nombre_dispositivo, tipo, estado, id_vivienda) VALUES ('Sensor Temperatura Ana', 'Temperatura', 'Activo', 1),('Luz Sala Ana', 'Luz', 'Activo', 1),('Sensor Movimiento Bruno', 'Movimiento', 'Activo', 2),('Ventilador Carla', 'Ventilador', 'Activo', 3),('Detector Gas David', 'Gas', 'Activo', 4),('Luz Cocina Emma', 'Luz', 'Inactivo', 5);
+INSERT INTO Automatizacion (id_auto, id_dispositivo, condicion, accion) VALUES (1, 1, 'Temperatura > 30°C', 'Encender ventilador'),(2, 2, 'Movimiento detectado', 'Encender luz'),(3, 3, 'Noche y movimiento', 'Encender alarma'),(4, 4, 'Temperatura < 18°C', 'Apagar ventilador'),(5, 5, 'Gas detectado', 'Enviar alerta'),(6, 6, 'Noche', 'Encender luz automáticamente');
+
+-- Aquí va la consulta para cada tabla --
+
+-- 1) Consulta de usuarios: muestra los nombres y correos de todos los usuarios registrados
+SELECT nombre, email 
+FROM Usuario;
+
+-- 2) Consulta de viviendas: lista el nombre de la vivienda y su ubicación
+SELECT nombre_vivienda, ubicacion 
+FROM Vivienda;
+
+-- 3) Consulta de dispositivos: devuelve el nombre, el tipo y el estado de cada dispositivo
+SELECT nombre_dispositivo, tipo, estado 
+FROM Dispositivo;
+
+-- 4) Consulta de automatizaciones: muestra la condición y la acción configurada para cada automatización
+SELECT id_auto, condicion, accion 
+FROM Automatizacion;
+
+
