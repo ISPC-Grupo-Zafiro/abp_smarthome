@@ -39,10 +39,10 @@ Además, se introduce el **Desarrollo Guiado por Pruebas (TDD)** para asegurar l
 
 En la última fase, se implementa el patrón **Data Access Object (DAO)** para separar la lógica de negocio de la lógica de acceso a datos. Esto permite que la aplicación interactúe con una base de datos (SQLite en este caso) de manera ordenada y escalable.
 
--   **`dominio/`**: Contiene las clases del negocio (Usuario, Vivienda, etc.).
+-   **`dominio/`**: Contiene las clases del negocio (Usuario, Vivienda,Evento_dispositivo y Disositivo).
 -   **`dao/`**: Contiene los objetos DAO (`usuario_dao.py`, `vivienda_dao.py`,`evento_dispositivo_dao.py`,`dispositivo_dao.py`) responsables de las operaciones CRUD (Crear, Leer, Actualizar, Borrar) en la base de datos.
 -   **`services/`**: Coordina la lógica de negocio, utilizando los DAO para la persistencia.
--   **`conn/`**: Gestiona la conexión con la base de datos `smarthome.db`.
+-   **`conn/`**: Gestiona la conexión con la base de datos `db.conn.py`.
 -   **`main.py`**: Punto de entrada que integra todas las capas.
 
 ## Cómo Ejecutar el Proyecto
