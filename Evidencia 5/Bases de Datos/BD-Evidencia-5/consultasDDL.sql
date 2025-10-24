@@ -31,12 +31,10 @@ CREATE TABLE Dispositivo (
 
 -- Tabla de automatizaciones
 CREATE TABLE Automatizacion (
-    id_auto INT,
+    id_auto INT AUTO_INCREMENT PRIMARY KEY,
     id_dispositivo INT,
     condicion VARCHAR(150),
     accion VARCHAR(150),
-    PRIMARY KEY (id_auto, id_dispositivo),
-    FOREIGN KEY (id_auto) REFERENCES Auto(id_auto),
     FOREIGN KEY (id_dispositivo) REFERENCES Dispositivo(id_dispositivo)
 );
 

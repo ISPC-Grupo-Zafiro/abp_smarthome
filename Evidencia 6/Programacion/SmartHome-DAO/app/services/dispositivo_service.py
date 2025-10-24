@@ -51,3 +51,4 @@ class DispositivoService:
     def obtener_todos_los_dispositivos(self):
         """Obtiene todos los dispositivos del sistema"""
         return self.dispositivo_dao.obtener_todos()
+    

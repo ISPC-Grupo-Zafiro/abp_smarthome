@@ -1,17 +1,30 @@
+"""
+Clase Vivienda - Sistema SmartHome Simplificado
+Representa las propiedades/casas donde se instalan dispositivos IoT
+"""
+
 class Vivienda:
+    """
+    Clase que representa una vivienda en el sistema SmartHome
+    Almacena información básica: ID, nombre y ubicación física
+    """
+    
     def __init__(self, id_vivienda, ubicacion, nombre_vivienda):
-        self._nombre_vivienda = nombre_vivienda
-        self.__ubicacion = ubicacion
-        self.__id_vivienda = id_vivienda
+        """Constructor: crear una nueva vivienda con ID, ubicación y nombre"""
+        self._nombre_vivienda = nombre_vivienda     # Nombre descriptivo de la propiedad
+        self.__ubicacion = ubicacion               # Dirección física (privado)
+        self.__id_vivienda = id_vivienda           # Identificador único (privado)
         
     def get_ubicacion(self):
+        """Obtener la ubicación/dirección de la vivienda"""
         return self.__ubicacion
 
     def get_id_vivienda(self):
+        """Obtener el ID único de la vivienda"""
         return self.__id_vivienda  
         
-    
     def ver_datos_vivienda(self):
+        """Mostrar toda la información de la vivienda"""
         return (
             f"ID_vivienda: {self.__id_vivienda}\n"
             f"Nombre_vivienda: {self._nombre_vivienda}\n"
@@ -19,9 +32,16 @@ class Vivienda:
         )
 
     def registrar_nueva_vivienda(self, id_vivienda, ubicacion, nombre_vivienda):
-        pass
+        """Crea y devuelve una nueva instancia de Vivienda con los datos proporcionados."""
+        return Vivienda(id_vivienda, ubicacion, nombre_vivienda)
     
     def modificar_datos_vivienda(self, id_vivienda, ubicacion, nombre_vivienda):
-        pass    
+        """Modifica los atributos de la vivienda actual con los valores dados."""
+        # Actualizar atributos privados/protegidos
+        self.__id_vivienda = id_vivienda
+        self.__ubicacion = ubicacion
+        self._nombre_vivienda = nombre_vivienda
+        return self
+       
     
    

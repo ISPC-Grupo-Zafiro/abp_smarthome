@@ -4,8 +4,8 @@ from mysql.connector import errorcode
 
 DB_CONFIG = {
     'host': 'localhost',
-    'user': '',
-    'password': '',
+    'user': 'root',
+    'password': 'Adriel12',
     'database': 'smarthome'
 }
 

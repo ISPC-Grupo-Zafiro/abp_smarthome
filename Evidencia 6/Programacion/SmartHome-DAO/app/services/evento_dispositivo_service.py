@@ -22,4 +22,4 @@ class EventoDispositivoService:
 
     def obtener_evento_por_id(self, id_evento):
         """Obtiene un evento por su ID"""
-        return self.evento_dao.obtener_por_id(id_evento)
+        return self.evento_dao.obtener_por_id(id_evento) 

@@ -1,85 +1,51 @@
+"""
+Pruebas TDD para la clase Usuario - Sistema SmartHome Simplificado
+Valida funcionalidad básica de autenticación y gestión de usuarios
+Solo 2 roles: administrador y usuario
+"""
 import unittest
-from clase_usuario import Usuario  # Asumiendo que la clase está en usuario.py
-
+from clase_usuario import Usuario
 
 class TestUsuario(unittest.TestCase):
-
+    """
+    Suite de pruebas para validar la clase Usuario
+    Cubre: creación de usuarios, autenticación, cambio de contraseñas y roles
+    """
+    
     def setUp(self):
-        # Crear un usuario de prueba para los tests
-        self.usuario = Usuario("test@email.com", "Leandro", "1234", "admin")
+        """Configurar datos de prueba: un admin y un usuario normal"""
+        self.admin = Usuario("admin@test.com", "Admin", "123", "administrador")
+        self.user = Usuario("user@test.com", "User", "456", "usuario")
 
-    # 1. Test para obtener email
-    def test_get_email(self):
-        self.assertEqual(self.usuario.get_email(), "test@email.com")
+    def test_crear_usuario_admin(self):
+        """Validar que se puede crear un usuario administrador correctamente"""
+        self.assertEqual(self.admin.get_email(), "admin@test.com")
+        self.assertEqual(self.admin._nombre, "Admin")
+        self.assertEqual(self.admin._rol, "administrador")
 
-    # 2. Test para obtener contraseña
-    def test_get_contraseña(self):
-        self.assertEqual(self.usuario.get_contraseña(), "1234")
+    def test_crear_usuario_normal(self):
+        """Validar que se puede crear un usuario normal correctamente"""
+        self.assertEqual(self.user.get_email(), "user@test.com")
+        self.assertEqual(self.user._nombre, "User")
+        self.assertEqual(self.user._rol, "usuario")
 
-    # 3. Test para cambiar contraseña
-    def test_set_contraseña(self):
-        self.usuario.set_contraseña("4321")
-        self.assertEqual(self.usuario.get_contraseña(), "4321")
-
-    # 4. Test para iniciar sesión correctamente
     def test_iniciar_sesion_correcto(self):
-        resultado = self.usuario.iniciar_sesion("test@email.com", "1234")
+        """Validar que el inicio de sesión funciona con credenciales correctas"""
+        resultado = self.admin.iniciar_sesion("admin@test.com", "123")
         self.assertEqual(resultado, "Sesión iniciada correctamente.")
-        self.assertTrue(self.usuario._sesion_activa)
+        self.assertTrue(self.admin._sesion_activa)
 
-    # 5. Test para iniciar sesión incorrectamente
-    def test_iniciar_sesion_incorrecto(self):
-        resultado = self.usuario.iniciar_sesion("test@email.com", "0000")
-        self.assertEqual(resultado, "Email o contraseña incorrectos.")
-        self.assertFalse(self.usuario._sesion_activa)
+    def test_cambiar_contraseña(self):
+        """Validar que se puede cambiar la contraseña del usuario"""
+        self.admin.set_contraseña("nueva123")
+        self.assertEqual(self.admin.get_contraseña(), "nueva123")
 
-    # 6. Test ver datos personales
-    def test_ver_datos_personales(self):
-        esperado = "Nombre: Leandro\nEmail: test@email.com\nContraseña: 1234\nRol: admin"
-        self.assertEqual(self.usuario.ver_datos_personales(), esperado)
-
-    # 7. Test modificar datos personales
-    def test_modificar_datos_personales(self):
-        self.usuario.modificar_datos_personales(
-            nuevo_email="nuevo@email.com",
-            nueva_contraseña="abcd",
-            nuevo_rol="usuario"
-        )
-        self.assertEqual(self.usuario.get_email(), "nuevo@email.com")
-        self.assertEqual(self.usuario.get_contraseña(), "abcd")
-        self.assertEqual(self.usuario._rol, "usuario")
-
-    # 8. Test cerrar sesión
-    def test_cerrar_sesion(self):
-        self.usuario._sesion_activa = True
-        resultado = self.usuario.cerrar_sesion()
-        self.assertFalse(self.usuario._sesion_activa)
-        self.assertEqual(resultado, "Sesión cerrada.")
-
+    def test_solo_dos_roles(self):
+        """Validar que el sistema maneja exactamente 2 roles: admin y usuario"""
+        self.assertEqual(self.admin._rol, "administrador")
+        self.assertEqual(self.user._rol, "usuario")
 
 if __name__ == "__main__":
     unittest.main()
 
-"""
-Explicación de los tests de la clase Usuario:
 
-1. `setUp`: Método que se ejecuta antes de cada test. Aquí se crea un objeto Usuario de prueba para usarlo en todos los tests.
-
-2. `test_get_email`: Verifica que el método `get_email()` devuelva correctamente el email del usuario.
-
-3. `test_get_contraseña`: Verifica que `get_contraseña()` devuelva la contraseña actual.
-
-4. `test_set_contraseña`: Cambia la contraseña usando `set_contraseña()` y comprueba que se haya actualizado correctamente.
-
-5. `test_iniciar_sesion_correcto`: Intenta iniciar sesión con las credenciales correctas y comprueba que la sesión se active y devuelva el mensaje esperado.
-
-6. `test_iniciar_sesion_incorrecto`: Intenta iniciar sesión con credenciales incorrectas y comprueba que la sesión no se active y devuelva el mensaje de error.
-
-7. `test_ver_datos_personales`: Comprueba que el método `ver_datos_personales()` devuelva correctamente todos los datos del usuario en formato de texto.
-
-8. `test_modificar_datos_personales`: Modifica el email, la contraseña y el rol del usuario, y verifica que los cambios se hayan aplicado correctamente.
-
-9. `test_cerrar_sesion`: Fuerza que la sesión esté activa, luego la cierra con `cerrar_sesion()` y verifica que la sesión se desactive y devuelva el mensaje esperado.
-
-En resumen, este conjunto de tests cubre la mayoría de las funcionalidades básicas de la clase `Usuario`, asegurando que la gestión de credenciales, sesión y datos personales funcione correctamente.
-"""

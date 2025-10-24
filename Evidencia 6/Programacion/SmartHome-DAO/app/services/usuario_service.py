@@ -22,11 +22,23 @@ class UsuarioService:
         return self.usuario_dao.obtener_todos()
 
     def actualizar_usuario(self, id_usuario, nombre, email, rol):
-        """Actualiza los datos de un usuario"""
+        """Actualiza los datos de un usuario sin cambiar la contraseña"""
         usuario = self.usuario_dao.obtener_por_id(id_usuario)
         if usuario:
             usuario.nombre = nombre
             usuario.email = email
+            usuario.rol = rol
+            self.usuario_dao.actualizar(usuario)
+            return usuario
+        return None
+
+    def actualizar_usuario_con_contraseña(self, id_usuario, nombre, email, contraseña, rol):
+        """Actualiza los datos de un usuario incluyendo la contraseña"""
+        usuario = self.usuario_dao.obtener_por_id(id_usuario)
+        if usuario:
+            usuario.nombre = nombre
+            usuario.email = email
+            usuario.contraseña = contraseña
             usuario.rol = rol
             self.usuario_dao.actualizar(usuario)
             return usuario

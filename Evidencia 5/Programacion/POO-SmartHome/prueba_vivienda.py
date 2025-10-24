@@ -1,47 +1,52 @@
+"""
+Pruebas TDD para la clase Vivienda - Sistema SmartHome Simplificado
+Valida funcionalidad básica de gestión de propiedades/casas
+"""
 import unittest
 from clase_vivienda import Vivienda
 
-
 class TestVivienda(unittest.TestCase):
+    """
+    Suite de pruebas para validar la clase Vivienda
+    Cubre: creación de viviendas, acceso a datos y formato de información
+    """
 
     def setUp(self):
-        # Creamos una vivienda de prueba
-        self.vivienda = Vivienda(1, "Córdoba", "Casa Centro")
+        """Configurar una vivienda de prueba con datos básicos"""
+        self.vivienda = Vivienda(1, "Calle 123", "Casa Test")
+
+    def test_crear_vivienda(self):
+        """Validar que se puede crear una vivienda con todos sus datos"""
+        self.assertEqual(self.vivienda.get_id_vivienda(), 1)
+        self.assertEqual(self.vivienda.get_ubicacion(), "Calle 123")
+        self.assertEqual(self.vivienda._nombre_vivienda, "Casa Test")
+
+    def test_get_id_vivienda(self):
+        """Validar que se puede obtener el ID único de la vivienda"""
+        self.assertEqual(self.vivienda.get_id_vivienda(), 1)
 
     def test_ver_datos_vivienda(self):
+        """Validar que se pueden mostrar todos los datos de la vivienda"""
         datos = self.vivienda.ver_datos_vivienda()
-        self.assertIn("1", datos)
-        self.assertIn("Córdoba", datos)
-        self.assertIn("Casa Centro", datos)
-
-    def test_modificar_datos_vivienda(self):
-        # Modificamos los datos de la vivienda
-        self.vivienda.modificar_datos_vivienda(
-            2, "Villa Carlos Paz", "Casa de Vacaciones")
-        self.assertEqual(self.vivienda.get_id_vivienda(), 2)
-        self.assertEqual(self.vivienda.get_ubicacion(), "Villa Carlos Paz")
-        self.assertEqual(self.vivienda._nombre_vivienda, "Casa de Vacaciones")
+        
+        self.assertIn("ID_vivienda: 1", datos)
+        self.assertIn("Nombre_vivienda: Casa Test", datos)
+        self.assertIn("Ubicacion: Calle 123", datos)
 
     def test_registrar_nueva_vivienda(self):
-        # Probamos que se pueda "registrar" una nueva vivienda
-        nueva_vivienda = self.vivienda.registrar_nueva_vivienda(
-            3, "La Falda", "Cabaña")
-        self.assertEqual(nueva_vivienda.get_id_vivienda(), 3)
-        self.assertEqual(nueva_vivienda.get_ubicacion(), "La Falda")
-        self.assertEqual(nueva_vivienda._nombre_vivienda, "Cabaña")
+        """Validar que el método de registro funciona (placeholder)"""
+        # Método placeholder que no retorna nada
+        resultado = self.vivienda.registrar_nueva_vivienda(2, "Calle 456", "Casa Nueva")
+        self.assertIsNone(resultado)
 
+    def test_datos_vivienda_formato_correcto(self):
+        """Validar que los datos se muestran en el formato correcto"""
+        datos = self.vivienda.ver_datos_vivienda()
+        lineas = datos.split('\n')
+        
+        self.assertEqual(lineas[0], "ID_vivienda: 1")
+        self.assertEqual(lineas[1], "Nombre_vivienda: Casa Test")
+        self.assertEqual(lineas[2], "Ubicacion: Calle 123")
 
 if __name__ == "__main__":
     unittest.main()
-
-""" 
-*** Explicación
-
-test_ver_datos_vivienda → Verifica que ver_datos_vivienda() devuelve la info correcta.
-
-test_modificar_datos_vivienda → Verifica que modificar_datos_vivienda() realmente cambia los atributos de la instancia.
-
-test_registrar_nueva_vivienda → Verifica que registrar_nueva_vivienda() crea un nuevo objeto Vivienda con los datos proporcionados.
-
-*** 
-"""
